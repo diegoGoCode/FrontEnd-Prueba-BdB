@@ -1,0 +1,20 @@
+<div class="d-flex justify-content-center">
+  <div class="card" style="width: 25rem;">
+    <img  class="card-img-top"  src="{{personInfo?.typePerson === 1 ? '../../../../assets/img/father.png' : personInfo?.typePerson === 2 ? '../../../../assets/img/mother.png' : '../../../../assets/img/children.png'}}">
+    <div class="card-body">
+      <h5 class="card-title">{{personInfo?.fullName}}</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item font-weight-bold">Date of Birth: <span class="font-weight-bold">{{personInfo?.birth}}</span></li>
+    </ul>
+    <div class="card-body">
+      <a class="btn btn-primary" (click)="goToPersons()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
+          <path d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z"/>
+        </svg>
+        Return
+      </a>
+    </div>
+  </div>
+</div>
+

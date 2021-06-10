@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-md-6">
+    <form [formGroup]="formPerson" >
+      <div class="mb-3">
+        <label for="fullName" class="form-label">Full Name</label>
+        <input type="text" class="form-control" id="fullName" formControlName="fullName">
+        <div *ngIf="formPerson.get('fullName').hasError('required') && (formPerson.get('fullName').dirty ||formPerson.get('fullName').touched)" style="color: #E74C3C;">
+          Full Name is required
+        </div>
+        <div *ngIf="formPerson.get('fullName').hasError('pattern')" style="color: #E74C3C;">
+          Numbers are not allowed
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="birth" class="form-label">Date of birth</label>
+        <input type="date" class="form-control" id="birth" formControlName="birth" [max]="maxDate">
+        <div *ngIf="formPerson.get('birth').hasError('required') && (formPerson.get('birth').dirty ||formPerson.get('birth').touched)" style="color: #E74C3C;">
+          The date of birth is required
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="type" class="form-label">Type Person</label><br>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" id="father" type="radio" [checked]="true" name="type" formControlName="type" [value]="1" (click)="changeImg(1)">
+          <label class="form-check-label" for="father">Father</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" id="mother" type="radio" name="type" formControlName="type" [value]="2" (click)="changeImg(2)">
+          <label class="form-check-label" for="mother">Mother</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" id="children" type="radio" name="type" formControlName="type" [value]="3" (click)="changeImg(3)">
+          <label class="form-check-label" for="children">Children</label>
+        </div>
+        <div *ngIf="formPerson.get('type').hasError('required') && (formPerson.get('type').dirty ||formPerson.get('type').touched)" style="color: #E74C3C;">
+          The type is required
+        </div>
+      </div>
+      <button class="btn btn-primary" style="margin-right: 10px;" [disabled]="!formPerson.valid" (click)="personEdit == null ?  savePerson() : updatePerson()">{{personEdit == null ? 'Save' : 'Update'}}</button>
+      <button class="btn btn-danger" (click)="goToPersons()">Cancel</button>
+    </form>
+  </div>
+  <div class="col-md-6 text-center">
+    <img src="../../../../assets/img/{{nameImg}}" width="200px" class="img-fluid" alt="">
+  </div>
+</div>
